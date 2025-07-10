@@ -15,7 +15,8 @@ class COMPARE_TYPE:
 
 ADDRESSES = {
   "SCPS-10047": {
-    "CurrentLevel": 0x699ec
+    "GAME_ID": 0x106CE,
+    "CurrentLevel": 0x699ec,
   }
 }
 class LEVEL:

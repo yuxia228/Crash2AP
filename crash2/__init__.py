@@ -6,8 +6,9 @@ from .Locations import get_location_names, get_total_locations, get_level_locati
 from .Options import Crash2Options, GAME_TITLE, GAME_TITLE_FULL
 from .Regions import create_regions
 from .Rules import set_rules
-
 from typing import Dict, Optional, Mapping, Any
+from .Client import Crash2Client # Unused, but required to register with BizHawkClient 
+
 from worlds.LauncherComponents import Component, SuffixIdentifier, Type, components, launch_subprocess
 def run_client(_url: Optional[str] = None):
     from .Crash2Client import launch_client
