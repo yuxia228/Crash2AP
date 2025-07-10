@@ -23,19 +23,19 @@ def set_rules_floor(world):
 def set_rules_hard_location(world):
     ### Color Gem limitaion
     # Stage3 White gem1 needs Blue gem
-    add_rule(world.multiworld.get_location("Stage03: White Gem1", world.player),
+    add_rule(world.multiworld.get_location("Stage03: White Gem1(need Blue Gem)", world.player),
              lambda state: state.has("Blue Gem", world.player))
     # Stage6 White gem1 needs Red gem
-    add_rule(world.multiworld.get_location("Stage06: White Gem", world.player),
+    add_rule(world.multiworld.get_location("Stage06: White Gem(need Red Gem)", world.player),
              lambda state: state.has("Red Gem", world.player))
     # Stage12 White gem2 needs Yellow gem
-    add_rule(world.multiworld.get_location("Stage12: White Gem2", world.player),
+    add_rule(world.multiworld.get_location("Stage12: White Gem2(need Yellow Gem)", world.player),
              lambda state: state.has("Yellow Gem", world.player))
     # Stage19 White gem2 needs Green gem
-    add_rule(world.multiworld.get_location("Stage19: White Gem2", world.player),
+    add_rule(world.multiworld.get_location("Stage19: White Gem2(need Green Gem)", world.player),
              lambda state: state.has("Green Gem", world.player))
     # Stage25 White gem2 needs All color gems
-    add_rule(world.multiworld.get_location("Stage25: White Gem2", world.player),
+    add_rule(world.multiworld.get_location("Stage25: White Gem2(need All Color Gems)", world.player),
              lambda state: state.has("Green Gem", world.player)
              and state.has("Red Gem", world.player)
              and state.has("Blue Gem", world.player)
@@ -44,13 +44,13 @@ def set_rules_hard_location(world):
 
     ### Floor limitation
     # Stage2 Red gem needs Stage 7
-    add_rule(world.multiworld.get_location("Stage02: Red Gem", world.player),
+    add_rule(world.multiworld.get_location("Stage02: Red Gem(from Stage07)", world.player),
              lambda state: state.has("Power Stone", world.player, count=5))
     # Stage07 White Gem1 needs Stage13
-    add_rule(world.multiworld.get_location("Stage07: White Gem1", world.player),
+    add_rule(world.multiworld.get_location("Stage07: White Gem1(from Stage13)", world.player),
              lambda state: state.has("Power Stone", world.player, count=10))
     # Stage14 White Gem1 needs Stage17
-    add_rule(world.multiworld.get_location("Stage14: White Gem1", world.player),
+    add_rule(world.multiworld.get_location("Stage14: White Gem1(from Stage17)", world.player),
              lambda state: state.has("Power Stone", world.player, count=15))
 
 

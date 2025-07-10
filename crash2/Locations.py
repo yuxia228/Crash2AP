@@ -78,7 +78,7 @@ class stageType():
 stage_dict = {
     "Stage01: Power Stone": 8*3+6, # 0x6DBA3: 0x40 0X00_0000
     "Stage01: White Gem"  : 8*3+6, # 0x6DA27: 0x40 0X00_0000
-    "Stage01: Blue Gem(Not brake boxes)"   : 8*7+5, # 0x6DA2B: 00X0_0000(6bit) 0x20
+    "Stage01: Blue Gem(Not break boxes)"   : 8*7+5, # 0x6DA2B: 00X0_0000(6bit) 0x20
     "Stage02: Power Stone": 8*1+6, # 0x6DBA1: 0x40 0X00_0000
     "Stage02: White Gem"  : 8*1+6, # 0x6DA25: 0X00_0000 0x40
     "Stage02: Red Gem(from Stage07)"    : 8*7+2, # 0x6DA2B: 0000_0X00(3bit) 0x04
