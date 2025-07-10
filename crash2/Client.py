@@ -350,7 +350,7 @@ async def memory_update(ctx):
     else:
         mask = 0x83 # 10000011
         write_val = (current_value & mask)
-    await _write8(ctx, addr, write_val)
+    await _write8(ctx, color_gem_addr, write_val)
 
 ##############################
 # Other functions for coding #
