@@ -244,6 +244,8 @@ async def item_received(ctx, item_code, item_count):
         ctx.green_gem += 1
     elif item_code == 51000006: # Purple Gem
         ctx.purple_gem += 1
+    elif item_code == 51000007: # Progressive Floor
+        ctx.power_stone += 5
     else: # not implemented
         pass
 
@@ -260,7 +262,7 @@ async def is_location_checked(ctx, ap_code):
     # Only checking in WarpRoom
     addr = ADDRESSES[ctx.game_id]["CurrentLevel"]
     level = await _read8(ctx, addr)
-    if level != LEVEL.WarpRoom:
+    if level != LEVEL.WarpRoom and level != LEVEL.BOSS05:
         return False
     #############################
     # Crash 2 Dedicated process #
@@ -307,7 +309,7 @@ async def memory_update(ctx):
     level = await _read8(ctx, addr)
 
     # Check Powerstone and erase flag after location is found
-    if level != LEVEL.WarpRoom:
+    if level == LEVEL.WarpRoom:
         power_stone_location = set([loc["Address"] for loc in LOCATIONS if "Power Stone" in loc["name"] ])
         for idx, addr in enumerate(power_stone_location):
             mem = await _read8(ctx, addr)

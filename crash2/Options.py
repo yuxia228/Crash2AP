@@ -24,15 +24,26 @@ class DummyOption(Choice):
     option_3 = 3
     default = 1
 
+class UseProgressItemInsteadOfPowerStones(Choice):
+    """
+    UseProgressItemInsteadOfPowerStones: Placeholeder
+    """
+    display_name = "UseProgressItemInsteadOfPowerStones"
+    option_use_progress_items = 0
+    option_use_powerstone_as_vanilla = 1
+    default = 0
+
 
 @dataclass
 class Crash2Options(PerGameCommonOptions):
     DummyOption:            DummyOption
+    UseProgressItemInsteadOfPowerStones: UseProgressItemInsteadOfPowerStones
 
 option_groups: Dict[str, List[Any]] = {
-    "General Options": [DummyOption]
+    "General Options": [DummyOption, UseProgressItemInsteadOfPowerStones],
 }
 
 slot_data_options: List[str] = {
     "DummyOption",
+    "UseProgressItemInsteadOfPowerStones",
 }

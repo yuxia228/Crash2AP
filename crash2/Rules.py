@@ -1,6 +1,6 @@
 from worlds.generic.Rules import add_rule, set_rule
 from typing import TYPE_CHECKING
-# from .Locations import rac3_locations
+from .Options import GAME_TITLE_FULL, UseProgressItemInsteadOfPowerStones
 # from .Items import gadget_items
 
 if TYPE_CHECKING:
@@ -8,19 +8,38 @@ if TYPE_CHECKING:
 
 
 def set_rules_floor(world):
+    options = world.options
+    # Progressive Item Option
+    if options.UseProgressItemInsteadOfPowerStones.value == UseProgressItemInsteadOfPowerStones.option_use_progress_items:
+        item_name = "Progressive Floor"
+        base_value = 1
+    else: # options.UseProgressItemInsteadOfPowerStones.value == UseProgressItemInsteadOfPowerStones.option_use_powerstone_as_vanilla:
+        item_name = "Power Stone"
+        base_value = 5
+
     # Floor elevator
     add_rule(world.multiworld.get_entrance("1F -> 2F", world.player),
-             lambda state: state.has("Power Stone", world.player, count=5))
+             lambda state: state.has(item_name, world.player, count=base_value*1))
     add_rule(world.multiworld.get_entrance("2F -> 3F", world.player),
-             lambda state: state.has("Power Stone", world.player, count=10))
+             lambda state: state.has(item_name, world.player, count=base_value*2))
     add_rule(world.multiworld.get_entrance("3F -> 4F", world.player),
-             lambda state: state.has("Power Stone", world.player, count=15))
+             lambda state: state.has(item_name, world.player, count=base_value*3))
     add_rule(world.multiworld.get_entrance("4F -> 5F", world.player),
-             lambda state: state.has("Power Stone", world.player, count=20))
+             lambda state: state.has(item_name, world.player, count=base_value*4))
     add_rule(world.multiworld.get_entrance("5F -> 6F", world.player),
-             lambda state: state.has("Power Stone", world.player, count=25))
+             lambda state: state.has(item_name, world.player, count=base_value*5))
+
 
 def set_rules_hard_location(world):
+    options = world.options
+    # Progressive Item Option
+    if options.UseProgressItemInsteadOfPowerStones.value == UseProgressItemInsteadOfPowerStones.option_use_progress_items:
+        item_name = "Progressive Floor"
+        base_value = 1
+    else: # options.UseProgressItemInsteadOfPowerStones.value == UseProgressItemInsteadOfPowerStones.option_use_powerstone_as_vanilla:
+        item_name = "Power Stone"
+        base_value = 5
+
     ### Color Gem limitaion
     # Stage3 White gem1 needs Blue gem
     add_rule(world.multiworld.get_location("Stage03: White Gem1(need Blue Gem)", world.player),
@@ -45,13 +64,13 @@ def set_rules_hard_location(world):
     ### Floor limitation
     # Stage2 Red gem needs Stage 7
     add_rule(world.multiworld.get_location("Stage02: Red Gem(from Stage07)", world.player),
-             lambda state: state.has("Power Stone", world.player, count=5))
+             lambda state: state.has(item_name, world.player, count=base_value*1))
     # Stage07 White Gem1 needs Stage13
     add_rule(world.multiworld.get_location("Stage07: White Gem1(from Stage13)", world.player),
-             lambda state: state.has("Power Stone", world.player, count=10))
+             lambda state: state.has(item_name, world.player, count=base_value*2))
     # Stage14 White Gem1 needs Stage17
     add_rule(world.multiworld.get_location("Stage14: White Gem1(from Stage17)", world.player),
-             lambda state: state.has("Power Stone", world.player, count=15))
+             lambda state: state.has(item_name, world.player, count=base_value*3))
 
 
     pass

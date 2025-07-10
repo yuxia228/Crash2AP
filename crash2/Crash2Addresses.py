@@ -21,6 +21,7 @@ ADDRESSES = {
 }
 class LEVEL:
   WarpRoom = 0x02
+  BOSS05 = 0x07
   Stage01 = 0x1E
   Stage02 = 0x0E
   Stage03 = 0x19

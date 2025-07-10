@@ -1,7 +1,7 @@
 from BaseClasses import Item, ItemClassification
 from .Locations import get_total_locations, location_table, get_ap_code
 from typing import List, Dict, TYPE_CHECKING, NamedTuple, Optional
-from .Options import GAME_TITLE_FULL
+from .Options import GAME_TITLE_FULL, UseProgressItemInsteadOfPowerStones
 if TYPE_CHECKING:
     from . import Crash2World
 
@@ -19,6 +19,14 @@ def create_itempool(world) -> List[Item]:
     junk_dict = junk_items
 
     for name in item_table.keys():
+        # Progress item option
+        if options.UseProgressItemInsteadOfPowerStones.value == UseProgressItemInsteadOfPowerStones.option_use_progress_items:
+            if "Power Stone" in name:
+                continue
+        else: # options.UseProgressItemInsteadOfPowerStones.value == UseProgressItemInsteadOfPowerStones.option_use_powerstone_as_vanilla:
+            if "Progressive Floor" in name:
+                continue
+
         item_type: ItemClassification = item_table.get(name).classification
         item_amount: int = item_table.get(name).count
         itempool += create_multiple_items(world, name, item_amount, item_type)
@@ -60,9 +68,10 @@ items = {
     "Yellow Gem" : ItemData(51000004, ItemClassification.progression, 1),
     "Green Gem"  : ItemData(51000005, ItemClassification.progression, 1),
     "Purple Gem" : ItemData(51000006, ItemClassification.progression, 1),
+    "Progressive Floor": ItemData(51000007, ItemClassification.progression, 5),
 }
 victory_items = {
-    "Defeat Cortex!" : ItemData(51000010, ItemClassification.progression, 1),
+    "Defeat Cortex!" : ItemData(51000010, ItemClassification.progression, 0),
 }
 junk_items = {
     "Apple" : ItemData(51000100, ItemClassification.filler, 0),
