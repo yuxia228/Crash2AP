@@ -23,7 +23,6 @@ def create_itempool(world) -> List[Item]:
         item_amount: int = item_table.get(name).count
         itempool += create_multiple_items(world, name, item_amount, item_type)
 
-    print("Available locations:")
     for loc in world.multiworld.get_locations(world.player):
         print(f"  '{loc.name}: {get_ap_code(loc.name)}'")
 
